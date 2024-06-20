@@ -23,7 +23,7 @@ This work presents Depth Anything V2. It significantly outperforms [V1](https://
 
 - **2024-06-20:** Our repository and project page are flagged by GitHub and removed from the public for 6 days. Sorry for the inconvenience.
 - **2024-06-14:** Paper, project page, code, models, demo, and benchmark are all released.
-- **2024-06-20:** This advanced upgraded repo is live, now running on .safetensors models instead of .pth models.
+- **2024-06-20:** This upgraded repo is now live & running on .safetensors models instead of .pth models.
 
 ## Pre-trained Models
 
@@ -46,10 +46,10 @@ Place the triton .whl into your repos main folder. (Once you have installed ever
 
 ### Installation
 
-```bash
+```
 git clone https://github.com/MackinationsAi/Upgraded-Depth-Anything-V2.git
-cd Upgraded-Depth-Anything-V2
-install.bat
+navigate to your Upgraded-Depth-Anything-V2 repo
+run install.bat
 
 ```
 ### Gradio demo
