@@ -41,6 +41,8 @@ We provide **three models** of varying scales for robust relative depth estimati
 
 ## Download Triton Dependency Wheel
 
+| Dependency | Params | Wheel |
+|:-|-:|:-:|
 Download the Triton==2.1.0 .whl | 306.7M | [Download](https://huggingface.co/MonsterMMORPG/SECourses/blob/main/triton-2.1.0-cp310-cp310-win_amd64.whl?download=true) |
 
 Place the triton .whl into your repos main folder. (Once you have installed everything & the gradio webui is running properly, you can delete it or use it elsewhere in a similar fashion)
