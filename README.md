@@ -15,7 +15,7 @@
 <a href='https://huggingface.co/datasets/depth-anything/DA-2K'><img src='https://img.shields.io/badge/Benchmark-DA--2K-yellow' alt='Benchmark'></a>
 </div>
 
-This work presents Depth Anything V2. It significantly outperforms [V1](https://github.com/LiheYoung/Depth-Anything) in fine-grained details and robustness. Compared with SD-based models, it enjoys faster inference speed, fewer parameters, higher depth accuracy, and a robust upgraded Gradio WebUI.
+This work presents Depth Anything V2. It significantly outperforms [V1](https://github.com/LiheYoung/Depth-Anything) in fine-grained details & robustness. Compared with SD-based models, it enjoys faster inference speed, fewer parameters, higher depth accuracy, & a robust upgraded Gradio WebUI.
 
 ![DepthV2_Outputs](https://github.com/MackinationsAi/Upgraded-Depth-Anything-V2/assets/133395980/46cdb302-3b34-4226-8920-372dfb4a0adc)
 
@@ -25,8 +25,7 @@ This work presents Depth Anything V2. It significantly outperforms [V1](https://
 
 ## News
 
-- **2024-06-20:** Our repository and project page are flagged by GitHub and removed from the public for 6 days. Sorry for the inconvenience.
-- **2024-06-14:** Paper, project page, code, models, demo, and benchmark are all released.
+- **2024-06-14:** Paper, project page, code, models, demo, & benchmark are all released.
 - **2024-06-20:** The repo has been upgraded & is also now running on .safetensors models instead of .pth models.
 
 ## Pre-trained .safetensors Models
