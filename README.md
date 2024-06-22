@@ -29,7 +29,7 @@ This work presents Depth Anything V2. It significantly outperforms [V1](https://
 - **2024-06-14:** Paper, project page, code, models, demo, and benchmark are all released.
 - **2024-06-20:** The repo has been upgraded & is also now running on .safetensors models instead of .pth models.
 
-## Pre-trained Models
+## Pre-trained .safetensors Models
 
 We provide **three models** of varying scales for robust relative depth estimation (the fourth model is still a WIP):
 
