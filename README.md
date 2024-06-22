@@ -15,15 +15,19 @@
 <a href='https://huggingface.co/datasets/depth-anything/DA-2K'><img src='https://img.shields.io/badge/Benchmark-DA--2K-yellow' alt='Benchmark'></a>
 </div>
 
-This work presents Depth Anything V2. It significantly outperforms [V1](https://github.com/LiheYoung/Depth-Anything) in fine-grained details and robustness. Compared with SD-based models, it enjoys faster inference speed, fewer parameters, and higher depth accuracy.
+This work presents Depth Anything V2. It significantly outperforms [V1](https://github.com/LiheYoung/Depth-Anything) in fine-grained details and robustness. Compared with SD-based models, it enjoys faster inference speed, fewer parameters, higher depth accuracy, and a robust upgraded Gradio WebUI.
 
-![teaser](assets/teaser.png)
+![DepthV2_Outputs](https://github.com/MackinationsAi/Upgraded-Depth-Anything-V2/assets/133395980/46cdb302-3b34-4226-8920-372dfb4a0adc)
+
+## Gradio Example
+
+![Single_Image_Processing](https://github.com/MackinationsAi/Upgraded-Depth-Anything-V2/assets/133395980/ba7f4653-bc58-465c-8701-bb1d2ec27651)
 
 ## News
 
 - **2024-06-20:** Our repository and project page are flagged by GitHub and removed from the public for 6 days. Sorry for the inconvenience.
 - **2024-06-14:** Paper, project page, code, models, demo, and benchmark are all released.
-- **2024-06-20:** This upgraded repo is now live & running on .safetensors models instead of .pth models.
+- **2024-06-20:** The repo has been upgraded & is also now running on .safetensors models instead of .pth models.
 
 ## Pre-trained Models
 
@@ -44,13 +48,12 @@ Place the triton .whl into your repos main folder. (Once you have installed ever
 
 ## Usage
 
-### Installation
+### Windows Installation
 
 ```
 git clone https://github.com/MackinationsAi/Upgraded-Depth-Anything-V2.git
 navigate to your Upgraded-Depth-Anything-V2 repo
-run install.bat
-
+install.bat
 ```
 ### Gradio demo
 
@@ -72,6 +75,7 @@ or
 ```bash
 python run.py --encoder <vits | vitb | vitl> --img-path <path> --outdir <outdir> [--input-size <size>] [--pred-only] [--grayscale]
 ```
+
 Options:
 - `--img-path`: You can either 1) point it to an image directory storing all interested images, 2) point it to a single image, or 3) point it to a text file storing all image paths.
 - `--input-size` (optional): By default, we use input size `518` for model inference. **You can increase the size for even more fine-grained results.**
@@ -106,6 +110,10 @@ Please refer to [metric depth estimation](./metric_depth).
 
 Please refer to [DA-2K benchmark](./DA-2K.md).
 
+## Paper Extract
+
+![teaser](assets/teaser.png)
+
 ## LICENSE
 
 Depth-Anything-V2-Small model is under the Apache-2.0 license. Depth-Anything-V2-Base/Large/Giant models are under the CC-BY-NC-4.0 license.
@@ -117,14 +125,14 @@ If you find this project useful, please consider citing below, give this upgrade
 ```bibtex
 @article{depth_anything_v2,
   title={Depth Anything V2},
-  author={Yang, Lihe and Kang, Bingyi and Huang, Zilong and Zhao, Zhen and Xu, Xiaogang and Feng, Jiashi and Zhao, Hengshuang},
+  author={Yang, Lihe & Kang, Bingyi & Huang, Zilong & Zhao, Zhen & Xu, Xiaogang & Feng, Jiashi & Zhao, Hengshuang},
   journal={arXiv:2406.09414},
   year={2024}
 }
 
 @inproceedings{depth_anything_v1,
   title={Depth Anything: Unleashing the Power of Large-Scale Unlabeled Data}, 
-  author={Yang, Lihe and Kang, Bingyi and Huang, Zilong and Xu, Xiaogang and Feng, Jiashi and Zhao, Hengshuang},
+  author={Yang, Lihe & Kang, Bingyi & Huang, Zilong & Xu, Xiaogang & Feng, Jiashi & Zhao, Hengshuang},
   booktitle={CVPR},
   year={2024}
 }
