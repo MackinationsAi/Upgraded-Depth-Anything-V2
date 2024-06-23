@@ -16,18 +16,22 @@ This work presents Depth Anything V2. It significantly outperforms [V1](https://
 
 - **2024-06-14:** Paper, project page, code, models, demo, & benchmark are all released.
 - **2024-06-20:** The repo has been upgraded & is also now running on .safetensors models instead of .pth models.
-- **2024-06-23:** Updated installation process to be a simpler one_click_install.bat file. It automatically downloads the depth models into a 'checkpoints' folder, the triton wheel into the repo's main folder & installs all of the dependencies needed. (Also updated this README.md file to provide more clarity!)
+- **2024-06-23:** Updated installation process to be a simpler one_click_install.bat file. It automatically downloads the depth models into a 'checkpoints' folder, the triton wheel into the repo's main folder & installs all of the dependencies needed. *[Also updated this README.md file to provide more clarity!]*
 
 ## Windows Installation
 
-All you need to do is clone the repo to your machine, then navigate to the repo folder location you cloned it to & run the one_click_install.bat file.
+All you need to do is copy & paste (or right-click), each of the following code-snippets in-order into cmd & everything will be installed properly.
 
 ```
 git clone https://github.com/MackinationsAi/Upgraded-Depth-Anything-V2.git
+```
+```
 cd Upgraded-Depth-Anything-V2
+```
+```
 one_click_install.bat
 ```
-That's it, once everything has installed all you have to do is pick one of the run_-------.bat file, double-click & you're off to depthing!
+That's it! All you have to do now is pick one of the run_-------.bat files, double-click & you're off to depthing!
 
 ## Usage
 
@@ -96,7 +100,7 @@ We provide **three models** of varying scales for robust relative depth estimati
 
 ## Triton Dependency Wheel
 
-***This dependency .whl is automatically downloaded to main tree repo folder when you run the one_click_install.bat. (I only provided the download link here incase you want to download it elsewhere for use outside this repo.)***
+***This dependency .whl is automatically downloaded to the main/tree repo-folder when you run the one_click_install.bat. (I only provided the download link here incase you want to download it elsewhere for use outside this repo.)***
 
 
 | Dependency | Params | Wheel |
