@@ -20,7 +20,7 @@ This work presents Depth Anything V2. It significantly outperforms [V1](https://
 
 ## Windows Installation
 
-All you need to do is copy & paste (or right-click), each of the following code-snippets in-order into cmd & everything will be installed properly.
+All you need to do is copy & paste (or right-click), each of the following lines in-order into cmd & everything will be installed properly.
 
 ```
 git clone https://github.com/MackinationsAi/Upgraded-Depth-Anything-V2.git
