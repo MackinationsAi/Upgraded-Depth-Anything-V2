@@ -38,7 +38,7 @@ def process_image(img_path, output_path, input_size, encoder, pred_only, graysca
     
     os.makedirs(output_path, exist_ok=True)
     
-    cmap = matplotlib.colormaps.get_cmap('Spectral_r')
+    cmap = matplotlib.colormaps.get_cmap('gray')
     
     for k, filename in enumerate(tqdm(filenames, desc="Processing images", unit="image")):
         print(f'Progress {k+1}/{len(filenames)}: {filename}')
@@ -46,30 +46,18 @@ def process_image(img_path, output_path, input_size, encoder, pred_only, graysca
         raw_image = cv2.imread(filename)
         
         depth = depth_anything.infer_image(raw_image, input_size)
-        depth = (depth - depth.min()) / (depth.max() - depth.min()) * 255.0
-        depth = depth.astype(np.uint8)
+        depth = (depth - depth.min()) / (depth.max() - depth.min()) * 65025.0
+        depth = depth.astype(np.uint16)
         
         depth_gray = np.repeat(depth[..., np.newaxis], 3, axis=-1)
         cv2.imwrite(os.path.join(output_path, os.path.splitext(os.path.basename(filename))[0] + '_depth_grayscale.png'), depth_gray)
-        
-        if not grayscale:
-            depth_color = (cmap(depth)[:, :, :3] * 255)[:, :, ::-1].astype(np.uint8)
-            cv2.imwrite(os.path.join(output_path, os.path.splitext(os.path.basename(filename))[0] + '_depth.png'), depth_color)
-            
-            if not pred_only:
-                split_region = np.ones((raw_image.shape[0], 50, 3), dtype=np.uint8) * 255
-                combined_result = cv2.hconcat([raw_image, split_region, depth_color])
-                cv2.imwrite(os.path.join(output_path, os.path.splitext(os.path.basename(filename))[0] + '_combined.png'), combined_result)
-        
-        elif pred_only:
-            cv2.imwrite(os.path.join(output_path, os.path.splitext(os.path.basename(filename))[0] + '_depth_grayscale.png'), depth_gray)
 
 def main():
     while True:
         parser = argparse.ArgumentParser(description='Depth Anything V2')
         
         parser.add_argument('--img-path', type=str, help='Path to the image file or directory containing images')
-        parser.add_argument('--input-size', type=int, default=518)
+        parser.add_argument('--input-size', type=int, default=2018)
         parser.add_argument('--outdir', type=str, default='vis_img_depth', help='Output directory')
         
         parser.add_argument('--encoder', type=str, default='vitl', choices=['vits', 'vitb', 'vitl', 'vitg'])     
@@ -79,14 +67,14 @@ def main():
         args = parser.parse_args()
         
         if not args.img_path:
-            args.img_path = input("Please enter the path to the image file or directory containing images: ").strip()
+            args.img_path = input("Path to image file/directory, can right click a file and Copy as Path, remove quotation marks if any: ").strip()
         
         if not args.outdir:
             args.outdir = input("Please enter the output directory (default is 'vis_img_depth'): ").strip() or 'vis_depth'
         
         process_image(args.img_path, args.outdir, args.input_size, args.encoder, args.pred_only, args.grayscale)
         
-        again = input("Would you like to convert another image? Y/N: ").strip().lower()
+        again = input("Convert another image? Y/N: ").strip().lower()
         if again not in ['y', 'yes']:
             break
 
