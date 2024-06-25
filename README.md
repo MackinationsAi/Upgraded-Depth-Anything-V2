@@ -1,5 +1,5 @@
 <div align="center">
-<h1>Upgraded Depth Anything V2</h1>
+<h1>Upgraded Depth Anything V2 - UDAV2</h1>
 </div>
 
 This work presents Depth Anything V2. It significantly outperforms [V1](https://github.com/LiheYoung/Depth-Anything) in fine-grained details & robustness. Compared with SD-based models, it enjoys faster inference speed, fewer parameters, higher depth accuracy, & a robust upgraded Gradio WebUI as well as both image & video .bat scripts for more intuitive CLI usage (if that is your more preferred method of use).
@@ -17,6 +17,8 @@ This work presents Depth Anything V2. It significantly outperforms [V1](https://
 - **2024-06-14:** Paper, project page, code, models, demo, & benchmark are all released.
 - **2024-06-20:** The repo has been upgraded & is also now running on .safetensors models instead of .pth models.
 - **2024-06-23:** Updated installation process to be a simpler one_click_install.bat file. It automatically downloads the depth models into a 'checkpoints' folder, the triton wheel into the repo's main folder & installs all of the dependencies needed. *[Also updated this README.md file to provide more clarity!]*
+- **2024-06-24:** [pravdomil](https://github.com/pravdomil) has provided a much need update to UDAV2 for 16bit image creation in order to make stunning 3D Bas-Reliefs! I am currently in the process of updating the gradio webui to include both 16bit single image & 16bit batch image creation which will be pushed in the coming days.
+- **2024-06-25:** I'm currently working on a beta version of UDAV2 as an automatic1111 extension & will be released next week, so stay-tuned! 
 
 ## Windows Installation
 
@@ -40,12 +42,29 @@ run_gradio.bat
 ```
 You can also try the [online gradio demo](https://huggingface.co/spaces/Depth-Anything/Depth-Anything-V2), though it is FAR less capable than this Upgraded Depth Anything V2 repo.
 
-### Running run_image-depth.py CLI script
+### Running run_image-depth_16bit.py CLI script to make 16bit images for creating 3D Bas-Reliefs!
 
 ***It works for both single image depth processing & batch image depth processing.***
 
 ```bash
-run_image-depth.bat
+run_image-depth_16bit.bat
+```
+### 3D Bas-Relief from 16bit Image Depth Maps Examples
+
+*The images used to make the following depth maps were created using Dreamshaper Turbo.**
+![making-3d-bas-reliefs-with-depth-anything-v2-16-bit-for-v0-dw0wzydrie8d1](https://github.com/MackinationsAi/Upgraded-Depth-Anything-V2/assets/133395980/847e37c1-f520-4c6f-b37d-9fccd2ef6eba)
+
+![making-3d-bas-reliefs-with-depth-anything-v2-16-bit-for-v0-o25m0zdrie8d1](https://github.com/MackinationsAi/Upgraded-Depth-Anything-V2/assets/133395980/1ac8f9d1-b311-4ec8-a64d-7329c6ff2e7d)
+
+![making-3d-bas-reliefs-with-depth-anything-v2-16-bit-for-v0-dsnahzdrie8d1](https://github.com/MackinationsAi/Upgraded-Depth-Anything-V2/assets/133395980/465ee9ee-a8b7-4207-9539-df40eb4ee409)
+
+
+### Running run_image-depth_8bit.py CLI script
+
+***It works for both single image depth processing & batch image depth processing.***
+
+```bash
+run_image-depth_8bit.bat
 ```
 or
 
