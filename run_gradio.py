@@ -12,7 +12,7 @@ import cv2
 from tqdm import tqdm
 
 # Upgraded code by: MackinationsAi
-# Original underlying code by: InstantX/DepthAnything
+# Original underlying code by: DepthAnything
 
 css = """
 #img-display-container {
