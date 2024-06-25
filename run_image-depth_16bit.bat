@@ -9,4 +9,4 @@ REM Activate the virtual environment
 CALL venv\Scripts\activate
 
 REM Run the conversion script
-python run_image-depth.py
+python run_image-depth_16bit.py
