@@ -31,16 +31,31 @@ one_click_install.bat
 ```
 That's it! All you have to do now is pick one of the run_-------.bat files, double-click & you're off to depthing!
 
+## Unix-like Sytems Installation
+
+Run the followign commands in your terminal.
+
+```bash
+source one_click_install.sh
+```
+
 ## Usage
 
 ### Gradio WebUi
 
 To use the upgraded gradio webui locally:
 
+#### For Windows
 ```bash
 run_gradio.bat
 ```
 You can also try the [online gradio demo](https://huggingface.co/spaces/Depth-Anything/Depth-Anything-V2), though it is FAR less capable than this Upgraded Depth Anything V2 repo.
+
+#### For Unix-like Systems
+
+```bash
+python run_gradio.py
+```
 
 ### Running run_image-depth_16bit.py CLI script to make 16bit images for creating 3D Bas-Reliefs!
 
