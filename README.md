@@ -25,18 +25,20 @@ This work presents Depth Anything V2. It significantly outperforms [V1](https://
 
 All you need to do is copy & paste (or right-click), each of the following lines in-order into cmd & everything will be installed properly.
 
-```
+```bash
 git clone https://github.com/MackinationsAi/Upgraded-Depth-Anything-V2.git
 cd Upgraded-Depth-Anything-V2
 one_click_install.bat
 ```
 That's it! All you have to do now is pick one of the run_-------.bat files, double-click & you're off to depthing!
 
-## Unix-like Sytems Installation
+## MacOS & Linux Installation
 
-Run the followign commands in your terminal.
+Run the following commands in your terminal.
 
 ```bash
+git clone https://github.com/MackinationsAi/Upgraded-Depth-Anything-V2.git
+cd Upgraded-Depth-Anything-V2
 source one_click_install.sh
 ```
 
@@ -52,7 +54,7 @@ run_gradio.bat
 ```
 You can also try the [online gradio demo](https://huggingface.co/spaces/Depth-Anything/Depth-Anything-V2), though it is FAR less capable than this Upgraded Depth Anything V2 repo.
 
-#### For Unix-like Systems
+#### For MacOS & Linux
 
 ```bash
 python run_gradio.py
