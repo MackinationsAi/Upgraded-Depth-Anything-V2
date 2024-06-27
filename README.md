@@ -19,6 +19,7 @@ This work presents Depth Anything V2. It significantly outperforms [V1](https://
 - **2024-06-23:** Updated installation process to be a simpler one_click_install.bat file. It automatically downloads the depth models into a 'checkpoints' folder, the triton wheel into the repo's main folder & installs all of the dependencies needed. *[Also updated this README.md file to provide more clarity!]*
 - **2024-06-24:** [pravdomil](https://github.com/pravdomil) has provided a much need update to UDAV2 for 16bit image creation in order to make stunning 3D Bas-Reliefs! I am currently in the process of updating the gradio webui to include both 16bit single image & 16bit batch image creation which will be pushed in the coming days.
 - **2024-06-25:** I'm currently working on a beta version of UDAV2 as an automatic1111 extension & will be released next week, so stay-tuned! 
+- **2024-06-27:** A1111 extension released! [sd-webui-udav2](https://github.com/MackinationsAi/sd-webui-udav2)
 
 ## Windows Installation
 
