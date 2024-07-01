@@ -21,6 +21,7 @@ This work presents Depth Anything V2. It significantly outperforms [V1](https://
 - **2024-06-25:** I'm currently working on a beta version of UDAV2 as an automatic1111 extension & will be released next week, so stay-tuned! 
 - **2024-06-27:** A1111 extension released! [sd-webui-udav2](https://github.com/MackinationsAi/sd-webui-udav2)
 - **2024-06-29:** Updated Forge extension release [sd-forge-udav2](https://github.com/MackinationsAi/sd-webui-udav2/releases/tag/sd-forge-udav2), to prevent conflicts w/ pre-existing installed extensions in Forge!
+- **2024-07-01:** [sd-webui-udav2](https://github.com/MackinationsAi/sd-webui-udav2) has now been added to the extension index.json! You can now install the extension directly inside A111.
 
 ## Windows Installation
 
