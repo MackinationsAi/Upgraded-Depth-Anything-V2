@@ -4,3 +4,5 @@ safetensors
 matplotlib
 opencv-python
 argparse
+torch
+torchvision
