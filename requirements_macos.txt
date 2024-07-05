@@ -1,0 +1,8 @@
+gradio_imageslider
+gradio==4.29.0
+safetensors
+matplotlib
+opencv-python
+argparse
+torch
+torchvision
