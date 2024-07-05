@@ -50,4 +50,4 @@ esac
 
 # Install other dependencies from requirements.txt
 echo "Installing other dependencies..."
-pip install -r requirements_macos.txt --no-cache-dir
+pip install -r requirements.txt --no-cache-dir
