@@ -20,8 +20,9 @@ This work presents Depth Anything V2. It significantly outperforms [V1](https://
 - **2024-06-24:** [pravdomil](https://github.com/pravdomil) has provided a much need update to UDAV2 for 16bit image creation in order to make stunning 3D Bas-Reliefs! I am currently in the process of updating the gradio webui to include both 16bit single image & 16bit batch image creation which will be pushed in the coming days.
 - **2024-06-25:** I'm currently working on a beta version of UDAV2 as an automatic1111 extension & will be released next week, so stay-tuned! 
 - **2024-06-27:** A1111 extension released! [sd-webui-udav2](https://github.com/MackinationsAi/sd-webui-udav2)
-- **2024-06-29:** Updated Forge extension release [sd-forge-udav2](https://github.com/MackinationsAi/sd-webui-udav2/releases/tag/sd-forge-udav2), to prevent conflicts w/ pre-existing installed extensions in Forge!
-- **2024-07-01:** [sd-webui-udav2](https://github.com/MackinationsAi/sd-webui-udav2) has now been added to the extension index.json! You can now install the extension directly inside A111.
+- **2024-06-29:** Updated Forge extension release [sd-forge-udav2](https://github.com/MackinationsAi/sd-webui-udav2/releases/tag/sd-forge-udav2_v0.0.3), to prevent conflicts w/ pre-existing installed extensions in Forge!
+- **2024-07-01:** [sd-webui-udav2](https://github.com/MackinationsAi/sd-webui-udav2) has now been added to the extension index.json! You can now install the extension directly inside A1111.
+- **2024-07-03:** [v1.1.452] [sd-webui-controlnet](https://github.com/Mikubill/sd-webui-controlnet/) now has a depth_anything_v2 preprocessor🔥! *Update transformers dependency to [transformers-4.44.1](https://github.com/MackinationsAi/sd-webui-controlnet/releases/tag/transformers-4.44.1) to use the new depth_anything_v2 controlnet preprocessor.*
 
 ## Windows Installation
 
@@ -43,6 +44,14 @@ git clone https://github.com/MackinationsAi/Upgraded-Depth-Anything-V2.git
 cd Upgraded-Depth-Anything-V2
 source one_click_install.sh
 ```
+or
+
+```bash
+git clone https://github.com/MackinationsAi/Upgraded-Depth-Anything-V2.git
+cd Upgraded-Depth-Anything-V2
+pip install requirements_macos.txt
+```
+Then manually download & place all 3 of the Depth Anything V2 models [download links found below] into a folder call `checkpoints` & you'll be good to go.
 
 ## Usage
 
