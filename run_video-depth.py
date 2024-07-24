@@ -16,6 +16,14 @@ from depth_anything_v2.dpt import DepthAnythingV2
 warnings.filterwarnings("ignore", message=".*cudnnStatus.*")
 os.environ['TORCH_CUDNN_V8_API_ENABLED'] = '0'
 
+if torch.cuda.is_available():
+    import torch.backends.cudnn as cudnn
+
+    os.environ['TORCH_CUDNN_V8_API_DISABLED'] = '1'
+
+    cudnn.benchmark = False
+    cudnn.deterministic = True
+
 def process_video(video_path, output_path, input_size, encoder, pred_only, grayscale):
     DEVICE = 'cuda' if torch.cuda.is_available() else 'mps' if torch.backends.mps.is_available() else 'cpu'
     
@@ -31,12 +39,15 @@ def process_video(video_path, output_path, input_size, encoder, pred_only, grays
     depth_anything.load_state_dict(state_dict)
     depth_anything = depth_anything.to(DEVICE).eval()
     
-    if os.path.isfile(video_path) and video_path.endswith('.mp4'):
+    if os.path.isfile(video_path) and video_path.lower().endswith('.mp4'):
         filenames = [video_path]
     else:
-        filenames = glob.glob(os.path.join(video_path, '**/*.mp4'), recursive=True)
+        video_path = os.path.normpath(video_path)
+        glob_pattern = os.path.join(video_path, '**', '*.mp4')
+        filenames = glob.glob(glob_pattern, recursive=True)
+
     os.makedirs(output_path, exist_ok=True)
-    
+
     margin_width = 26
     cmap = matplotlib.colormaps.get_cmap('Spectral_r')
     
@@ -85,6 +96,9 @@ def process_video(video_path, output_path, input_size, encoder, pred_only, grays
         depth_out.release()
         grayscale_depth_out.release()
 
+def remove_double_quotes(path):
+    return path.replace('"', '')
+
 def main():
     while True:
         parser = argparse.ArgumentParser(description='Depth Anything V2')
@@ -102,6 +116,9 @@ def main():
         
         if not args.outdir:
             args.outdir = input("Please enter the output directory (default is 'vis_vid_depth'): ").strip() or 'vis_video_depth'
+        
+        args.video_path = remove_double_quotes(args.video_path)
+        args.outdir = remove_double_quotes(args.outdir)
         
         process_video(args.video_path, args.outdir, args.input_size, args.encoder, args.pred_only, args.grayscale)
         
