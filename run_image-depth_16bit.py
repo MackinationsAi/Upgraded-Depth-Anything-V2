@@ -30,11 +30,13 @@ def process_image(img_path, output_path, input_size, encoder, pred_only, graysca
     depth_anything.load_state_dict(state_dict)
     depth_anything = depth_anything.to(DEVICE).eval()
     
-    if os.path.isfile(img_path) and (img_path.endswith('.png') or img_path.endswith('.jpg') or img_path.endswith('.jpeg')):
+    if os.path.isfile(img_path) and img_path.lower().endswith(('.png', '.jpg', '.jpeg')):
         filenames = [img_path]
     else:
-        filenames = glob.glob(os.path.join(img_path, '**/*.*'), recursive=True)
-        filenames = [f for f in filenames if f.endswith(('.png', '.jpg', '.jpeg'))]
+        img_path = os.path.normpath(img_path)
+        glob_pattern = os.path.join(img_path, '**', '*.*')
+        filenames = glob.glob(glob_pattern, recursive=True)
+        filenames = [f for f in filenames if f.lower().endswith(('.png', '.jpg', '.jpeg'))]
     
     os.makedirs(output_path, exist_ok=True)
     
@@ -52,6 +54,9 @@ def process_image(img_path, output_path, input_size, encoder, pred_only, graysca
         depth_gray = np.repeat(depth[..., np.newaxis], 3, axis=-1)
         cv2.imwrite(os.path.join(output_path, os.path.splitext(os.path.basename(filename))[0] + '_depth_grayscale.png'), depth_gray)
 
+def remove_double_quotes(path):
+    return path.replace('"', '')
+
 def main():
     while True:
         parser = argparse.ArgumentParser(description='Depth Anything V2')
@@ -67,10 +72,13 @@ def main():
         args = parser.parse_args()
         
         if not args.img_path:
-            args.img_path = input("Path to image file/directory, can right click a file and Copy as Path, remove quotation marks if any: ").strip()
+            args.img_path = input("Path to image file/directory, can right click a file and Copy as Path: ").strip()
         
         if not args.outdir:
             args.outdir = input("Please enter the output directory (default is 'vis_img_depth'): ").strip() or 'vis_depth'
+            
+        args.img_path = remove_double_quotes(args.img_path)
+        args.outdir = remove_double_quotes(args.outdir)
         
         process_image(args.img_path, args.outdir, args.input_size, args.encoder, args.pred_only, args.grayscale)
         
