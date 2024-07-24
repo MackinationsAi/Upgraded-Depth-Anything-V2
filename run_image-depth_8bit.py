@@ -15,6 +15,14 @@ from depth_anything_v2.dpt import DepthAnythingV2
 
 warnings.filterwarnings("ignore", message=".*cudnnStatus.*")
 
+if torch.cuda.is_available():
+    import torch.backends.cudnn as cudnn
+
+    os.environ['TORCH_CUDNN_V8_API_DISABLED'] = '1'
+
+    cudnn.benchmark = False
+    cudnn.deterministic = True
+
 def process_image(img_path, output_path, input_size, encoder, pred_only, grayscale):
     DEVICE = 'cuda' if torch.cuda.is_available() else 'mps' if torch.backends.mps.is_available() else 'cpu'
     
@@ -29,12 +37,14 @@ def process_image(img_path, output_path, input_size, encoder, pred_only, graysca
     state_dict = load_file(f'checkpoints/depth_anything_v2_{encoder}.safetensors')
     depth_anything.load_state_dict(state_dict)
     depth_anything = depth_anything.to(DEVICE).eval()
-    
-    if os.path.isfile(img_path) and (img_path.endswith('.png') or img_path.endswith('.jpg') or img_path.endswith('.jpeg')):
+
+    if os.path.isfile(img_path) and img_path.lower().endswith(('.png', '.jpg', '.jpeg')):
         filenames = [img_path]
     else:
-        filenames = glob.glob(os.path.join(img_path, '**/*.*'), recursive=True)
-        filenames = [f for f in filenames if f.endswith(('.png', '.jpg', '.jpeg'))]
+        img_path = os.path.normpath(img_path)
+        glob_pattern = os.path.join(img_path, '**', '*.*')
+        filenames = glob.glob(glob_pattern, recursive=True)
+        filenames = [f for f in filenames if f.lower().endswith(('.png', '.jpg', '.jpeg'))]
     
     os.makedirs(output_path, exist_ok=True)
     
@@ -63,6 +73,9 @@ def process_image(img_path, output_path, input_size, encoder, pred_only, graysca
         
         elif pred_only:
             cv2.imwrite(os.path.join(output_path, os.path.splitext(os.path.basename(filename))[0] + '_depth_grayscale.png'), depth_gray)
+            
+def remove_double_quotes(path):
+    return path.replace('"', '')
 
 def main():
     while True:
@@ -83,6 +96,9 @@ def main():
         
         if not args.outdir:
             args.outdir = input("Please enter the output directory (default is 'vis_img_depth'): ").strip() or 'vis_depth'
+            
+        args.img_path = remove_double_quotes(args.img_path)
+        args.outdir = remove_double_quotes(args.outdir)
         
         process_image(args.img_path, args.outdir, args.input_size, args.encoder, args.pred_only, args.grayscale)
         
