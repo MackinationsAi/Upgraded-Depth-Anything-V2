@@ -15,6 +15,14 @@ from depth_anything_v2.dpt import DepthAnythingV2
 
 warnings.filterwarnings("ignore", message=".*cudnnStatus.*")
 
+if torch.cuda.is_available():
+    import torch.backends.cudnn as cudnn
+
+    os.environ['TORCH_CUDNN_V8_API_DISABLED'] = '1'
+
+    cudnn.benchmark = False
+    cudnn.deterministic = True
+
 def process_image(img_path, output_path, input_size, encoder, pred_only, grayscale):
     DEVICE = 'cuda' if torch.cuda.is_available() else 'mps' if torch.backends.mps.is_available() else 'cpu'
     
