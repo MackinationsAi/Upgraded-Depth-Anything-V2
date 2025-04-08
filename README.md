@@ -31,7 +31,7 @@ All you need to do is copy & paste (or right-click), each of the following lines
 ```bash
 git clone https://github.com/MackinationsAi/Upgraded-Depth-Anything-V2.git
 cd Upgraded-Depth-Anything-V2
-one_click_install.bat
+oc_install.bat
 ```
 That's it! All you have to do now is pick one of the run_-------.bat files, double-click & you're off to depthing!
 
@@ -42,7 +42,7 @@ Run the following commands in your terminal.
 ```bash
 git clone https://github.com/MackinationsAi/Upgraded-Depth-Anything-V2.git
 cd Upgraded-Depth-Anything-V2
-source one_click_install.sh
+source oc_install.sh
 ```
 or
 
