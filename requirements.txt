@@ -1,6 +1,8 @@
-gradio_imageslider
-gradio==4.29.0
+numpy>=1.21.0,<2.3.0
+scipy
 safetensors
-matplotlib
 opencv-python
-argparse
+matplotlib
+gradio
+gradio_imageslider
+tqdm

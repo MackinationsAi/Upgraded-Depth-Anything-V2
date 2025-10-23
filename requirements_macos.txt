@@ -1,8 +1,10 @@
-gradio_imageslider
-gradio==4.29.0
-safetensors
-matplotlib
-opencv-python
-argparse
 torch
 torchvision
+numpy==1.26.4
+scipy
+safetensors
+opencv-python
+matplotlib
+gradio==4.29.0
+gradio_imageslider
+tqdm

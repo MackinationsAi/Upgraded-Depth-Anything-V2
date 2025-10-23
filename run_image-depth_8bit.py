@@ -59,20 +59,8 @@ def process_image(img_path, output_path, input_size, encoder, pred_only, graysca
         depth = (depth - depth.min()) / (depth.max() - depth.min()) * 255.0
         depth = depth.astype(np.uint8)
         
-        depth_gray = np.repeat(depth[..., np.newaxis], 3, axis=-1)
-        cv2.imwrite(os.path.join(output_path, os.path.splitext(os.path.basename(filename))[0] + '_depth_grayscale.png'), depth_gray)
-        
-        if not grayscale:
-            depth_color = (cmap(depth)[:, :, :3] * 255)[:, :, ::-1].astype(np.uint8)
-            cv2.imwrite(os.path.join(output_path, os.path.splitext(os.path.basename(filename))[0] + '_depth.png'), depth_color)
-            
-            if not pred_only:
-                split_region = np.ones((raw_image.shape[0], 50, 3), dtype=np.uint8) * 255
-                combined_result = cv2.hconcat([raw_image, split_region, depth_color])
-                cv2.imwrite(os.path.join(output_path, os.path.splitext(os.path.basename(filename))[0] + '_combined.png'), combined_result)
-        
-        elif pred_only:
-            cv2.imwrite(os.path.join(output_path, os.path.splitext(os.path.basename(filename))[0] + '_depth_grayscale.png'), depth_gray)
+        # Save only the true 8-bit single-channel grayscale depth map
+        cv2.imwrite(os.path.join(output_path, os.path.splitext(os.path.basename(filename))[0] + '_depth_8bit.png'), depth)
             
 def remove_double_quotes(path):
     return path.replace('"', '')

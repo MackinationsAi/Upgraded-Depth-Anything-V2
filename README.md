@@ -78,6 +78,38 @@ python run_gradio.py
 ```bash
 run_image-depth_16bit.bat
 ```
+
+### ✨ NEW: Enhanced High Bit Depth Support (24-bit & 32-bit)
+
+UDAV2 now supports extended bit depth processing for maximum precision depth maps:
+
+#### 24-bit Depth Processing
+```bash
+run_image-depth_24bit.bat
+# Or with options:
+python run_image-depth_24bit.py --seamless --input-size 1024
+```
+
+#### 32-bit Depth Processing  
+```bash
+run_image-depth_32bit.bat
+# Or with options:
+python run_image-depth_32bit.py --output-format float32 --seamless
+```
+
+#### Enhanced Video Processing
+```bash
+run_video-depth_enhanced.bat
+# Or with full control:
+python run_video-depth_enhanced.py --bit-depth 16 --temporal-smoothing --seamless
+```
+
+**New Features:**
+- **Bit Depths**: 8-bit (PNG), 16-bit (PNG), 24-bit (TIFF), 32-bit (TIFF/Float32)
+- **Seamless Processing**: Edge blending for tiling, periodic boundaries, mirror conditions
+- **Temporal Smoothing**: Reduces video flickering with frame-to-frame consistency
+- **Enhanced Gradio UI**: Bit depth and seamless options in web interface
+- **TIFF Output**: High precision formats for professional workflows
 ### 3D Bas-Relief from 16bit Image Depth Maps Examples
 
 *The images used to make the following depth maps were created using Dreamshaper Turbo.**
